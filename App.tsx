@@ -16,10 +16,8 @@ function App(): JSX.Element {
       <Text preset="headingLarge" style={{color: 'red'}}>
         Teste App
       </Text>
-      <Text preset="headingLarge" style={{fontFamily: 'Satoshi-Black'}}>
-        Teste App
-      </Text>
-      <Text preset="headingMedium" style={{color: 'red'}}>
+      <Text preset="headingLarge">Teste App</Text>
+      <Text preset="headingLarge" style={{color: 'red'}}>
         Teste App
       </Text>
     </SafeAreaView>
