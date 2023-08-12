@@ -12,16 +12,22 @@ import {Text} from './src/components/Text/Text';
 import {Button} from './src/components/Button/Button';
 import {ThemeProvider} from '@shopify/restyle';
 import {theme} from './theme/theme';
+import {Box} from './src/components/Box/Box';
 
 function App(): JSX.Element {
   return (
     <ThemeProvider theme={theme}>
       <SafeAreaView>
-        <Text bold preset="headingLarge">
-          Coffstack
-        </Text>
-        <View>
-          <Button title={'Teste'} />
+        <View style={{paddingHorizontal: 24}}>
+          <Text bold preset="headingLarge">
+            Coffstack
+          </Text>
+          <Box marginBottom="s24">
+            <Button title={'entrar'} />
+          </Box>
+          <Box>
+            <Button loading title={'Teste'} />
+          </Box>
         </View>
       </SafeAreaView>
     </ThemeProvider>
