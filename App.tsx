@@ -7,19 +7,26 @@
 
 import React from 'react';
 
-import {SafeAreaView} from 'react-native';
+import {SafeAreaView, View} from 'react-native';
 import {Text} from './src/components/Text/Text';
+import {Button} from './src/components/Button/Button';
 
 function App(): JSX.Element {
   return (
     <SafeAreaView>
-      <Text preset="headingLarge" style={{color: 'red'}}>
-        Teste App
+      <Text bold preset="headingLarge">
+        Coffstack
       </Text>
-      <Text preset="headingLarge">Teste App</Text>
-      <Text preset="headingLarge" style={{color: 'red'}}>
-        Teste App
-      </Text>
+      <View
+        style={{
+          marginTop: 20,
+          marginLeft: 20,
+          marginRight: 20,
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+        <Button title={'Teste'} />
+      </View>
     </SafeAreaView>
   );
 }
