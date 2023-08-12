@@ -5,8 +5,6 @@ import {
   TextProps as RNTextProps,
   TextStyle,
 } from 'react-native';
-import {preset} from '../../../jest.config';
-
 interface TextProps extends RNTextProps {
   preset?: TextVariants;
   bold?: boolean;
