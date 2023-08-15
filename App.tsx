@@ -22,12 +22,17 @@ function App(): JSX.Element {
           <Text bold preset="headingLarge">
             Coffstack
           </Text>
-          <Box marginBottom="s24">
-            <Button title={'entrar'} />
-          </Box>
-          <Box>
-            <Button loading title={'Teste'} backgroundColor="error" />
-          </Box>
+
+          <Button preset="primary" title={'entrar'} marginBottom="s12" />
+          <Button preset="outline" title={'outline'} marginBottom="s12" />
+
+          <Button
+            preset="outline"
+            loading
+            disabled
+            title={'Teste'}
+            marginBottom="s12"
+          />
         </View>
       </SafeAreaView>
     </ThemeProvider>
