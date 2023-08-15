@@ -22,15 +22,7 @@ export const Button = ({title, loading}: ButtonProps) => {
       height={50}
       alignItems="center"
       justifyContent="center"
-      //   style={{
-      //     borderRadius: 18,
-      //     paddingVertical: 14,
-      //     paddingHorizontal: 20,
-      //     backgroundColor: colors.carrotSecondary,
-
-      //     alignItems: 'center',
-      //     width: '100%',
-    >
+      borderRadius="s16">
       {loading ? (
         <ActivityIndicator />
       ) : (
