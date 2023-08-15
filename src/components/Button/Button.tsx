@@ -3,7 +3,7 @@ import React from 'react';
 import {ActivityIndicator} from 'react-native';
 import {Text} from '../Text/Text';
 import {TouchableOpacityBox, TouchableOpacityBoxProps} from '../Box/Box';
-import {ThemeColors} from '../../../theme/theme';
+
 import {buttonPresets} from './ButtonPresets';
 
 export type ButtonPreset = 'primary' | 'outline';
@@ -22,7 +22,7 @@ export const Button = ({
   disabled,
   ...TouchableOpacityBoxProps
 }: ButtonProps) => {
-  const buttonPreset = buttonPresets[preset];
+  const buttonPreset = buttonPresets[preset][disabled ? 'disabled' : 'default'];
 
   return (
     <TouchableOpacityBox
@@ -32,7 +32,7 @@ export const Button = ({
       alignItems="center"
       justifyContent="center"
       borderRadius="s16"
-      {...buttonPreset}
+      {...buttonPreset.container}
       {...TouchableOpacityBoxProps}>
       {loading ? (
         <ActivityIndicator />
