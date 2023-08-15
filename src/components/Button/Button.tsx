@@ -16,7 +16,7 @@ export const Button = ({
 }: ButtonProps) => {
   return (
     <TouchableOpacityBox
-      backgroundColor="carrotSecondary"
+      backgroundColor="greenPrimary"
       paddingHorizontal="s10"
       paddingVertical="s10"
       height={50}
@@ -27,7 +27,7 @@ export const Button = ({
       {loading ? (
         <ActivityIndicator />
       ) : (
-        <Text preset="paragraphMedium" bold style={{color: '#fff'}}>
+        <Text preset="paragraphMedium" bold color="primaryContrast">
           {title}
         </Text>
       )}
