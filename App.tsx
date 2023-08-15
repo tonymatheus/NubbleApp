@@ -26,7 +26,7 @@ function App(): JSX.Element {
             <Button title={'entrar'} />
           </Box>
           <Box>
-            <Button loading title={'Teste'} />
+            <Button loading title={'Teste'} backgroundColor="error" />
           </Box>
         </View>
       </SafeAreaView>
