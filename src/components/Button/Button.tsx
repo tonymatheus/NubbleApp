@@ -12,7 +12,7 @@ interface ButtonProps extends TouchableOpacityBoxProps {
   title: string;
   loading?: boolean;
   preset?: ButtonPreset;
-  disabled: boolean;
+  disabled?: boolean;
 }
 
 export const Button = ({
@@ -26,6 +26,7 @@ export const Button = ({
 
   return (
     <TouchableOpacityBox
+      disabled={disabled}
       paddingHorizontal="s10"
       paddingVertical="s10"
       height={50}
