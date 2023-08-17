@@ -26,7 +26,7 @@ export const Button = ({
 
   return (
     <TouchableOpacityBox
-      disabled={disabled}
+      disabled={disabled || loading}
       paddingHorizontal="s10"
       paddingVertical="s10"
       height={50}
