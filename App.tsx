@@ -24,8 +24,20 @@ function App(): JSX.Element {
           </Text>
 
           <Button preset="primary" title={'entrar'} marginBottom="s12" />
-          <Button preset="outline" title={'outline'} marginBottom="s12" />
+          <Button
+            disabled
+            preset="outline"
+            title={'outline'}
+            marginBottom="s12"
+          />
 
+          <Button
+            preset="outline"
+            loading
+            disabled
+            title={'Teste'}
+            marginBottom="s12"
+          />
           <Button
             preset="outline"
             loading
