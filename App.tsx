@@ -23,6 +23,8 @@ function App(): JSX.Element {
           </Text>
           <Icon name="eyeOff" color="error" size={40} />
           <Icon name="eyeOn" color="errorLight" size={50} />
+          <Icon name="arrowLeft" color="errorLight" size={50} />
+          <Icon name="arrowRight" color="errorLight" size={50} />
         </View>
       </SafeAreaView>
     </ThemeProvider>
