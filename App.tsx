@@ -11,9 +11,9 @@ import {SafeAreaView, View} from 'react-native';
 import {Text} from './src/components/Text/Text';
 import {ThemeProvider} from '@shopify/restyle';
 import {theme} from './theme/theme';
-import {Box} from './src/components/Box/Box';
 import {Button} from './src/components/Button/Button';
 import {TextInput} from './src/components/TextInput/TextInput';
+import {Icon} from './src/components/Icon/Icon';
 
 function App(): JSX.Element {
   return (
@@ -26,17 +26,19 @@ function App(): JSX.Element {
           <Text marginBottom="s40" preset="paragraphLarge">
             Digite seu email e senha
           </Text>
-          <Box marginBottom="s20">
-            <TextInput errorMessage="erro" label="e-mail" placeholder="email" />
-          </Box>
-          <Box>
-            <TextInput
-              errorMessage="errou de novo"
-              label="senha"
-              placeholder="password"
-            />
-          </Box>
-          <Text color="primary" preset="paragraphSmall" marginTop="s10" bold>
+          <TextInput
+            errorMessage="erro"
+            label="e-mail"
+            placeholder="email"
+            boxProps={{marginBottom: 's10'}}
+          />
+          <TextInput
+            label="senha"
+            placeholder="password"
+            RightComponent={<Icon color="gray2" name="eyeOn" />}
+            boxProps={{marginBottom: 's20'}}
+          />
+          <Text color="primary" preset="paragraphSmall" bold>
             esqueci minha senha
           </Text>
           <Button title="Entrar" preset="primary" marginTop="s48" />
