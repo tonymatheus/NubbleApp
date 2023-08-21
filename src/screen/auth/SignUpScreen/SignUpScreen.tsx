@@ -10,7 +10,7 @@ export const SignUpScreen = () => {
     //TODO: implementar submit form
   };
   return (
-    <Screen canGoback>
+    <Screen canGoback scrollable>
       <Text bold preset="headingLarge" marginBottom="s32">
         Criar uma conta
       </Text>
@@ -32,7 +32,35 @@ export const SignUpScreen = () => {
         boxProps={{marginBottom: 's20'}}
       />
       <TextInput
-        label="Ssenha"
+        label="Senha"
+        placeholder="Digite sua senha"
+        errorMessage="Digite um username válido"
+        RightComponent={<EyeOnIcon />}
+        boxProps={{marginBottom: 's40'}}
+      />
+      <TextInput
+        label="Senha"
+        placeholder="Digite sua senha"
+        errorMessage="Digite um username válido"
+        RightComponent={<EyeOnIcon />}
+        boxProps={{marginBottom: 's40'}}
+      />
+      <TextInput
+        label="Senha"
+        placeholder="Digite sua senha"
+        errorMessage="Digite um username válido"
+        RightComponent={<EyeOnIcon />}
+        boxProps={{marginBottom: 's40'}}
+      />
+      <TextInput
+        label="Senha"
+        placeholder="Digite sua senha"
+        errorMessage="Digite um username válido"
+        RightComponent={<EyeOnIcon />}
+        boxProps={{marginBottom: 's40'}}
+      />
+      <TextInput
+        label="Senha"
         placeholder="Digite sua senha"
         errorMessage="Digite um username válido"
         RightComponent={<EyeOnIcon />}
