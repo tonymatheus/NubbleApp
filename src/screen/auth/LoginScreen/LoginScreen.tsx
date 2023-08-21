@@ -16,7 +16,6 @@ export const LoginScreen = () => {
         Digite seu email e senha
       </Text>
       <TextInput
-        errorMessage="erro"
         label="E-mail"
         placeholder="email"
         boxProps={{marginBottom: 's10'}}
