@@ -12,11 +12,15 @@ import {useAppTheme} from '../../hooks/useAppTheme';
 interface TextInputProps extends RNTextInputProps {
   label: string;
   errorMessage?: string;
+  RightComponent?: React.ReactElement;
+  boxProps?: BoxProps;
 }
 
 export const TextInput = ({
   label,
   errorMessage,
+  RightComponent,
+  boxProps,
   ...rnTextInputProps
 }: TextInputProps) => {
   const {colors} = useAppTheme();
@@ -27,6 +31,7 @@ export const TextInput = ({
     borderColor: errorMessage ? 'error' : 'gray4',
     padding: 's16',
     borderRadius: 's12',
+    flexDirection: 'row',
   };
 
   const focusInput = () => {
@@ -34,8 +39,8 @@ export const TextInput = ({
   };
 
   return (
-    <Pressable onPress={focusInput}>
-      <Box>
+    <Box {...boxProps}>
+      <Pressable onPress={focusInput}>
         <Text preset="paragraphMedium" marginBottom="s4">
           {label}
         </Text>
@@ -46,19 +51,30 @@ export const TextInput = ({
             style={$textInputStyle}
             {...rnTextInputProps}
           />
+          {RightComponent && (
+            <Box
+              marginLeft="s16"
+              justifyContent="center"
+              height={20}
+              width={20}>
+              {RightComponent}
+            </Box>
+          )}
         </Box>
         {errorMessage && (
           <Text bold preset="paragraphSmall" color="error">
             {errorMessage}
           </Text>
         )}
-      </Box>
-    </Pressable>
+      </Pressable>
+    </Box>
   );
 };
 
 const $textInputStyle: TextStyle = {
   padding: 0,
+  flexGrow: 1,
+  flexShrink: 1,
   fontFamily: $fontFamily.regular,
   ...$fontSizes.paragraphMedium,
 };
