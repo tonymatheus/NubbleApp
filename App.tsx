@@ -27,10 +27,14 @@ function App(): JSX.Element {
             Digite seu email e senha
           </Text>
           <Box marginBottom="s20">
-            <TextInput label="e-mail" placeholder="email" />
+            <TextInput errorMessage="erro" label="e-mail" placeholder="email" />
           </Box>
           <Box>
-            <TextInput label="senha" placeholder="password" />
+            <TextInput
+              errorMessage="errou de novo"
+              label="senha"
+              placeholder="password"
+            />
           </Box>
           <Text color="primary" preset="paragraphSmall" marginTop="s10" bold>
             esqueci minha senha
