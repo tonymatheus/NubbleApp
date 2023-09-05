@@ -28,6 +28,7 @@ export const Screen = ({children, canGoback, scrollable}: ScreenProps) => {
 
   return (
     <KeyboardAvoidingView
+      style={{flex: 1}}
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
       <Container backgroundColor={colors.background}>
         <Box
