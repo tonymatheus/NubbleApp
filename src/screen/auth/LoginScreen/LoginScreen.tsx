@@ -1,14 +1,22 @@
 import React from 'react';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
 import {Text} from '../../../components/Text/Text';
 import {TextInput} from '../../../components/TextInput/TextInput';
 import {Button} from '../../../components/Button/Button';
 import {Icon} from '../../../components/Icon/Icon';
 import {Screen} from '../../../components/Screen/Screen';
+import {RootStackParamList} from '../../../routes/Routes';
 
-export const LoginScreen = () => {
+type ScreenProps = NativeStackScreenProps<RootStackParamList, 'LoginScreen'>;
+
+export const LoginScreen = ({navigation}: ScreenProps) => {
+  const navigateToSignUpScreen = () => {
+    navigation.navigate('LoginScreen');
+  };
+
   return (
-    <Screen>
+    <Screen scrollable>
       <Text bold preset="headingLarge">
         Olá
       </Text>
@@ -30,7 +38,12 @@ export const LoginScreen = () => {
         esqueci minha senha
       </Text>
       <Button title="Entrar" preset="primary" marginTop="s48" />
-      <Button title="Criar Conta" preset="outline" marginTop="s12" />
+      <Button
+        title="Criar Conta"
+        preset="outline"
+        marginTop="s12"
+        onPress={navigateToSignUpScreen}
+      />
     </Screen>
   );
 };
