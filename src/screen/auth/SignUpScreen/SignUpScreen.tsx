@@ -5,8 +5,12 @@ import {TextInput} from '../../../components/TextInput/TextInput';
 import {EyeOnIcon} from '../../../assets/icons/EyeOnIcon';
 import {Button} from '../../../components/Button/Button';
 import {PasswordInput} from '../../../components/PasswordInput/PasswordInput';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {RootStackParamList} from '../../../routes/Routes';
 
-export const SignUpScreen = () => {
+type ScreenProps = NativeStackScreenProps<RootStackParamList, 'SignUpScreen'>;
+
+export const SignUpScreen = ({navigation}: ScreenProps) => {
   const submitForm = () => {
     //TODO: implementar submit form
   };
