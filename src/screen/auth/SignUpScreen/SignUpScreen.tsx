@@ -13,6 +13,14 @@ type ScreenProps = NativeStackScreenProps<RootStackParamList, 'SignUpScreen'>;
 export const SignUpScreen = ({navigation}: ScreenProps) => {
   const submitForm = () => {
     //TODO: implementar submit form
+    navigation.navigate('SuccessScreen', {
+      title: 'Sua conta foi criada com sucesso',
+      description: 'Agora é só fazer login na nossa plataforma',
+      icon: {
+        name: 'checkRound',
+        color: 'success',
+      },
+    });
   };
   return (
     <Screen canGoback scrollable>
