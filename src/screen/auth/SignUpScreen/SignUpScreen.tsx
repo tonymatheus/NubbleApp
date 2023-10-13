@@ -2,7 +2,6 @@ import React from 'react';
 import {Screen} from '../../../components/Screen/Screen';
 import {Text} from '../../../components/Text/Text';
 import {TextInput} from '../../../components/TextInput/TextInput';
-import {EyeOnIcon} from '../../../assets/icons/EyeOnIcon';
 import {Button} from '../../../components/Button/Button';
 import {PasswordInput} from '../../../components/PasswordInput/PasswordInput';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
@@ -23,7 +22,7 @@ export const SignUpScreen = ({navigation}: ScreenProps) => {
         color: 'success',
       },
     });
-   };
+  };
   return (
     <Screen canGoback scrollable>
       <Text bold preset="headingLarge" marginBottom="s32">
