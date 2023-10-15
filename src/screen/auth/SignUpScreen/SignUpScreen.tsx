@@ -6,7 +6,7 @@ import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../../routes/Routes';
 import {useResetNavigationSuccess} from '../../../hooks/useResetNavigationSuccess';
 import {FromTextInput} from '../../../components/Form/FromTextInput/FromTextInput';
-import {FormPasswordInput} from '../../../components/Form/FromTextInput/FormPasswordTextInput';
+import {FormPasswordInput} from '../../../components/Form/FromTextInput/FormPasswordInput';
 import {useForm} from 'react-hook-form';
 
 type SignUpFormType = {
