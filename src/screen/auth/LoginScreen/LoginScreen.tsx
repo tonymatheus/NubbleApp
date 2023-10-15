@@ -33,7 +33,7 @@ export const LoginScreen = ({navigation}: ScreenProps) => {
   });
 
   const submitForm = ({email, password}: LoginFormType) => {
-    Alert.alert(`Email: ${email} ${`\n`} Senha: ${password}`);
+    Alert.alert(`Email: ${email} ${`\n`} Senha: ${password}`);  
   };
 
   const navigateToSignUpScreen = () => {
