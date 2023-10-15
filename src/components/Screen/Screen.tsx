@@ -23,11 +23,6 @@ export const Screen = ({children, canGoback, scrollable}: ScreenProps) => {
 
   const navigation = useNavigation();
 
-  console.log({
-    device: Platform.OS,
-    top,
-  });
-
   const Container = scrollable ? ScrollViewContainer : ViewContainer;
 
   return (
