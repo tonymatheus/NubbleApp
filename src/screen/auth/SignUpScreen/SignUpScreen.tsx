@@ -1,14 +1,13 @@
 import React from 'react';
 import {Screen} from '../../../components/Screen/Screen';
 import {Text} from '../../../components/Text/Text';
-import {TextInput} from '../../../components/TextInput/TextInput';
 import {Button} from '../../../components/Button/Button';
-import {PasswordInput} from '../../../components/PasswordInput/PasswordInput';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../../routes/Routes';
 import {useResetNavigationSuccess} from '../../../hooks/useResetNavigationSuccess';
-import {Controller, useForm} from 'react-hook-form';
 import {FromTextInput} from '../../../components/Form/FromTextInput/FromTextInput';
+import {FormPasswordInput} from '../../../components/Form/FromTextInput/FormPasswordTextInput';
+import {useForm} from 'react-hook-form';
 
 type SignUpFormType = {
   username: string;
@@ -67,6 +66,7 @@ export const SignUpScreen = ({navigation}: ScreenProps) => {
         }}
         label="Nome Completo"
         placeholder="Digite seu nome completo"
+        autoCapitalize="words"
         boxProps={{marginBottom: 's20'}}
       />
 
@@ -75,29 +75,27 @@ export const SignUpScreen = ({navigation}: ScreenProps) => {
         name="email"
         rules={{
           required: 'email obrigatório',
+          pattern: {
+            value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
+            message: 'E-mail inválido',
+          },
         }}
         label="E-mail"
         placeholder="Digite seu E-mail"
         boxProps={{marginBottom: 's20'}}
       />
 
-      <Controller
+      <FormPasswordInput
         control={control}
         name="password"
         rules={{
           required: 'senha é obrigatória',
         }}
-        render={({field, fieldState}) => (
-          <PasswordInput
-            value={field.value}
-            onChangeText={field.onChange}
-            errorMessage={fieldState.error?.message}
-            label="Senha"
-            placeholder="digite sua nova senha"
-            boxProps={{marginBottom: 's48'}}
-          />
-        )}
+        label="Senha"
+        placeholder="digite sua nova senha"
+        boxProps={{marginBottom: 's48'}}
       />
+
       <Button
         disabled={!formState.isValid}
         onPress={handleSubmit(submitForm)}
