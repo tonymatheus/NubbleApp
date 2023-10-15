@@ -8,19 +8,15 @@ import {useResetNavigationSuccess} from '../../../hooks/useResetNavigationSucces
 import {FromTextInput} from '../../../components/Form/FromTextInput/FromTextInput';
 import {FormPasswordInput} from '../../../components/Form/FromTextInput/FormPasswordInput';
 import {useForm} from 'react-hook-form';
-
-type SignUpFormType = {
-  username: string;
-  fullname: string;
-  email: string;
-  password: string;
-};
+import {zodResolver} from '@hookform/resolvers/zod';
+import {SignUpSchema, signUpSchema} from './signUpSchema';
 
 type ScreenProps = NativeStackScreenProps<RootStackParamList, 'SignUpScreen'>;
 
 export const SignUpScreen = ({navigation}: ScreenProps) => {
   const {reset} = useResetNavigationSuccess();
-  const {handleSubmit, control, formState} = useForm<SignUpFormType>({
+  const {handleSubmit, control, formState} = useForm<SignUpSchema>({
+    resolver: zodResolver(signUpSchema),
     defaultValues: {
       username: '',
       fullname: '',
@@ -30,7 +26,7 @@ export const SignUpScreen = ({navigation}: ScreenProps) => {
     mode: 'onChange',
   });
 
-  const submitForm = (formValues: SignUpFormType) => {
+  const submitForm = (formValues: SignUpSchema) => {
     console.log(formValues);
     // reset({
     //   title: 'Sua conta foi criada com sucesso',
@@ -50,9 +46,6 @@ export const SignUpScreen = ({navigation}: ScreenProps) => {
       <FromTextInput
         control={control}
         name="username"
-        rules={{
-          required: 'username obrigatório',
-        }}
         label="Seu username"
         placeholder="@"
         boxProps={{marginBottom: 's20'}}
@@ -61,9 +54,6 @@ export const SignUpScreen = ({navigation}: ScreenProps) => {
       <FromTextInput
         control={control}
         name="fullname"
-        rules={{
-          required: 'fullname obrigatório',
-        }}
         label="Nome Completo"
         placeholder="Digite seu nome completo"
         autoCapitalize="words"
@@ -73,13 +63,6 @@ export const SignUpScreen = ({navigation}: ScreenProps) => {
       <FromTextInput
         control={control}
         name="email"
-        rules={{
-          required: 'email obrigatório',
-          pattern: {
-            value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
-            message: 'E-mail inválido',
-          },
-        }}
         label="E-mail"
         placeholder="Digite seu E-mail"
         boxProps={{marginBottom: 's20'}}
@@ -88,9 +71,6 @@ export const SignUpScreen = ({navigation}: ScreenProps) => {
       <FormPasswordInput
         control={control}
         name="password"
-        rules={{
-          required: 'senha é obrigatória',
-        }}
         label="Senha"
         placeholder="digite sua nova senha"
         boxProps={{marginBottom: 's48'}}
