@@ -6,7 +6,7 @@ import {Button} from '../../../components/Button/Button';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../../routes/Routes';
 import {useResetNavigationSuccess} from '../../../hooks/useResetNavigationSuccess';
-import {FromTextInput} from '../../../components/Form/FromTextInput/FromTextInput';
+import {FormTextInput} from '../../../components/Form/FormTextInput/FormTextInput';
 import {Controller, useForm} from 'react-hook-form';
 import {
   ForgotPasswordScheme,
@@ -51,7 +51,7 @@ export const ForgotPasswordScreen = ({navigation}: ScreenProps) => {
       <Text preset="paragraphLarge" marginBottom="s32">
         Digite seu email e enviaremos as instruções para redefinição de senha
       </Text>
-      <FromTextInput
+      <FormTextInput
         control={control}
         label="E-mail"
         name="email"
