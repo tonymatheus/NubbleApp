@@ -1,15 +1,19 @@
 import React, {useState} from 'react';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
-import {Text, Screen} from '@components';
-import {Button} from '../../../components/Button/Button';
+import {
+  Text,
+  Screen,
+  Button,
+  TouchableOpacityBox,
+  FormPasswordInput,
+  FormTextInput,
+} from '@components';
 
-// import {Screen} from '../../../components/Screen/Screen';
 import {RootStackParamList} from '../../../routes/Routes';
-import {TouchableOpacityBox} from '../../../components/Box/Box';
+
 import {Alert} from 'react-native';
-import {FormTextInput} from '../../../components/Form/FormTextInput//FormTextInput';
-import {FormPasswordInput} from '../../../components/Form/FormTextInput/FormPasswordInput';
+
 import {LoginSchema, loginScheme} from './loginScheme';
 import {zodResolver} from '@hookform/resolvers/zod';
 import {useForm} from 'react-hook-form';
