@@ -1,7 +1,7 @@
 import React from 'react';
 import {Svg, Path, Circle} from 'react-native-svg';
 
-import {palette} from '../../../theme/theme';
+import {palette} from '../../theme/theme';
 import {IconBase} from '../../components/Icon/Icon';
 
 export function MessageRoundIcon({

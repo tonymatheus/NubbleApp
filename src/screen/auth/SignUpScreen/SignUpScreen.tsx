@@ -9,8 +9,8 @@ import {
 } from '@components';
 
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../../../routes/Routes';
-import {useResetNavigationSuccess} from '../../../hooks/useResetNavigationSuccess';
+import {RootStackParamList} from '@routes';
+import {useResetNavigationSuccess} from '@hooks';
 import {useForm} from 'react-hook-form';
 import {zodResolver} from '@hookform/resolvers/zod';
 import {SignUpSchema, signUpSchema} from './signUpSchema';

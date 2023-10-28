@@ -1,4 +1,4 @@
-import {useAppTheme} from './useAppTheme';
+import {useAppTheme} from '@hooks';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 export const useAppSafeArea = () => {

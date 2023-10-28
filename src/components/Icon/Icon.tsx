@@ -26,12 +26,12 @@ import {ProfileIcon} from '../../assets/icons/ProfileIcon';
 import {SearchIcon} from '../../assets/icons/SearchIcon';
 import {SettingsIcon} from '../../assets/icons/SettingsIcon';
 import {TrashIcon} from '../../assets/icons/TrashIcon';
-
-import {ThemeColors} from '../../../theme/theme';
-import {useAppTheme} from '../../hooks/useAppTheme';
-import {Pressable} from 'react-native';
 import {checkRoundIcon} from '../../assets/icons/checkRoundIcon';
 import {MessageRoundIcon} from '../../assets/icons/MessageRoundIcon';
+
+import {ThemeColors} from '@theme';
+import {useAppTheme} from '@hooks';
+import {Pressable} from 'react-native';
 
 export interface IconBase {
   size?: number;
