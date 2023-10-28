@@ -5,8 +5,9 @@ import {Button} from '../../../components/Button/Button';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../../routes/Routes';
 import {useResetNavigationSuccess} from '../../../hooks/useResetNavigationSuccess';
-import {FromTextInput} from '../../../components/Form/FromTextInput/FromTextInput';
-import {FormPasswordInput} from '../../../components/Form/FromTextInput/FormPasswordInput';
+import {FormTextInput} from '../../../components/Form/FormTextInput/FormTextInput';
+
+import {FormPasswordInput} from '../../../components/Form/FormTextInput/FormPasswordInput';
 import {useForm} from 'react-hook-form';
 import {zodResolver} from '@hookform/resolvers/zod';
 import {SignUpSchema, signUpSchema} from './signUpSchema';
@@ -43,7 +44,7 @@ export const SignUpScreen = ({navigation}: ScreenProps) => {
         Criar uma conta
       </Text>
 
-      <FromTextInput
+      <FormTextInput
         control={control}
         name="username"
         label="Seu username"
@@ -51,7 +52,7 @@ export const SignUpScreen = ({navigation}: ScreenProps) => {
         boxProps={{marginBottom: 's20'}}
       />
 
-      <FromTextInput
+      <FormTextInput
         control={control}
         name="fullname"
         label="Nome Completo"
@@ -60,7 +61,7 @@ export const SignUpScreen = ({navigation}: ScreenProps) => {
         boxProps={{marginBottom: 's20'}}
       />
 
-      <FromTextInput
+      <FormTextInput
         control={control}
         name="email"
         label="E-mail"
