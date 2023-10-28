@@ -1,15 +1,15 @@
 import React, {useState} from 'react';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
-import {Text} from '../../../components/Text/Text';
+import {Text, Screen} from '@components';
 import {Button} from '../../../components/Button/Button';
 
-import {Screen} from '../../../components/Screen/Screen';
+// import {Screen} from '../../../components/Screen/Screen';
 import {RootStackParamList} from '../../../routes/Routes';
 import {TouchableOpacityBox} from '../../../components/Box/Box';
 import {Alert} from 'react-native';
-import {FromTextInput} from '../../../components/Form/FromTextInput/FromTextInput';
-import {FormPasswordInput} from '../../../components/Form/FromTextInput/FormPasswordInput';
+import {FormTextInput} from '../../../components/Form/FormTextInput//FormTextInput';
+import {FormPasswordInput} from '../../../components/Form/FormTextInput/FormPasswordInput';
 import {LoginSchema, loginScheme} from './loginScheme';
 import {zodResolver} from '@hookform/resolvers/zod';
 import {useForm} from 'react-hook-form';
@@ -52,7 +52,7 @@ export const LoginScreen = ({navigation}: ScreenProps) => {
         Digite seu email e senha
       </Text>
 
-      <FromTextInput
+      <FormTextInput
         control={control}
         name="email"
         label="E-mail"
