@@ -1,5 +1,9 @@
-import React, {useState} from 'react';
+import React from 'react';
+import {Alert} from 'react-native';
+
+import {zodResolver} from '@hookform/resolvers/zod';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {useForm} from 'react-hook-form';
 
 import {
   Text,
@@ -9,22 +13,17 @@ import {
   FormPasswordInput,
   FormTextInput,
 } from '@components';
-
 import {RootStackParamList} from '@routes';
 
-import {Alert} from 'react-native';
-
 import {LoginSchema, loginScheme} from './loginScheme';
-import {zodResolver} from '@hookform/resolvers/zod';
-import {useForm} from 'react-hook-form';
 
 type ScreenProps = NativeStackScreenProps<RootStackParamList, 'LoginScreen'>;
 
 export const LoginScreen = ({navigation}: ScreenProps) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  // const [email, setEmail] = useState('');
+  // const [password, setPassword] = useState('');
 
-  const [emailErrorMessage, setEmailErrorMessage] = useState('');
+  // const [emailErrorMessage, setEmailErrorMessage] = useState('');
 
   const {control, formState, handleSubmit} = useForm<LoginSchema>({
     resolver: zodResolver(loginScheme),
@@ -36,7 +35,7 @@ export const LoginScreen = ({navigation}: ScreenProps) => {
   });
 
   const submitForm = ({email, password}: LoginSchema) => {
-    Alert.alert(`Email: ${email} ${`\n`} Senha: ${password}`);
+    Alert.alert(`Email: ${email} ${'\n'} Senha: ${password}`);
   };
 
   const navigateToSignUpScreen = () => {

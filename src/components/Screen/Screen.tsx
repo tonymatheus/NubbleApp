@@ -1,6 +1,6 @@
 import React from 'react';
-
 import {KeyboardAvoidingView, Platform} from 'react-native';
+
 import {useNavigation} from '@react-navigation/native';
 
 import {
@@ -11,7 +11,6 @@ import {
   Icon,
   TouchableOpacityBox,
 } from '@components';
-
 import {useAppTheme} from '@hooks';
 import {useAppSafeArea} from '@hooks';
 
