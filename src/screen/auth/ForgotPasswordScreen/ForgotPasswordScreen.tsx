@@ -30,8 +30,7 @@ export const ForgotPasswordScreen = ({}: ScreenProps) => {
     mode: 'onChange',
   });
 
-  const submitform = (values: ForgotPasswordScheme) => {
-    console.log(values);
+  const submitform = (_values: ForgotPasswordScheme) => {
     reset({
       title: `Enviamos as instruções para seu ${'\n'}e-mail`,
       description:

@@ -3,6 +3,9 @@ module.exports = {
   extends: '@react-native',
   rules: {
     '@typescript-eslint/no-unused-vars': 'error',
+    'react/react-in-jsx-scope': 0,
+    'react-native/no-inline-styles': 0,
+    'no-console': ['error', {allow: ['']}],
   },
   plugins: ['import'],
   overrides: [
