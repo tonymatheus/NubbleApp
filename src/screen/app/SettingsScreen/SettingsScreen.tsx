@@ -12,10 +12,6 @@ export const SettingsScreen = ({
   return (
     <Screen canGoback>
       <Text preset="headingLarge">Settings Screen</Text>
-      <Button
-        title="Salvar"
-        onPress={() => navigation.navigate('HomeScreen')}
-      />
     </Screen>
   );
 };
