@@ -2,8 +2,17 @@ import React from 'react';
 
 import {BottomTabBarProps} from '@react-navigation/bottom-tabs';
 
-import {Box, Icon, Text, TouchableOpacityBox} from '@components';
+import {
+  Box,
+  BoxProps,
+  Icon,
+  Text,
+  TextProps,
+  TouchableOpacityBox,
+  TouchableOpacityBoxProps,
+} from '@components';
 import {useAppSafeArea} from '@hooks';
+import {$shadowProps} from '@theme';
 
 import {AppTabBottomTabParamList} from './AppTabNavigator';
 import {mapScreenToProps} from './mapScreenToProps';
@@ -16,11 +25,7 @@ export const AppTabBar = ({
   const {bottom} = useAppSafeArea();
 
   return (
-    <Box
-      backgroundColor="background"
-      paddingTop="s12"
-      flexDirection="row"
-      style={{paddingBottom: bottom}}>
+    <Box {...$boxWrapper} style={[{paddingBottom: bottom}, $shadowProps]}>
       {state.routes.map((route, index) => {
         const {options} = descriptors[route.key];
         const tabItem =
@@ -36,7 +41,11 @@ export const AppTabBar = ({
           });
 
           if (!isFocused && !event.defaultPrevented) {
-            navigation.navigate(route.name, route.params);
+            navigation.navigate({
+              name: route.name,
+              params: route.params,
+              merge: true,
+            });
           }
         };
 
@@ -49,9 +58,7 @@ export const AppTabBar = ({
 
         return (
           <TouchableOpacityBox
-            activeOpacity={1}
-            alignItems="center"
-            accessibilityRole="button"
+            {...$itemWrapper}
             accessibilityState={isFocused ? {selected: true} : {}}
             accessibilityLabel={options.tabBarAccessibilityLabel}
             testID={options.tabBarTestID}
@@ -63,11 +70,8 @@ export const AppTabBar = ({
               color={isFocused ? 'primary' : 'backgroundContrast'}
             />
             <Text
-              marginTop="s4"
-              style={{color: isFocused ? '#673ab7' : '#222'}}
-              semiBold
-              color={isFocused ? 'primary' : 'backgroundContrast'}
-              preset="paragraphCaption">
+              {...$label}
+              color={isFocused ? 'primary' : 'backgroundContrast'}>
               {tabItem.label}
             </Text>
           </TouchableOpacityBox>
@@ -75,4 +79,22 @@ export const AppTabBar = ({
       })}
     </Box>
   );
+};
+
+const $label: TextProps = {
+  semiBold: true,
+  marginTop: 's4',
+  preset: 'paragraphLarge',
+};
+
+const $itemWrapper: TouchableOpacityBoxProps = {
+  activeOpacity: 1,
+  alignItems: 'center',
+  accessibilityRole: 'button',
+};
+
+const $boxWrapper: BoxProps = {
+  backgroundColor: 'background',
+  paddingTop: 's12',
+  flexDirection: 'row',
 };
