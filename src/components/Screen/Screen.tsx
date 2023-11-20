@@ -10,17 +10,24 @@ import {
   Box,
   Icon,
   TouchableOpacityBox,
+  BoxProps,
 } from '@components';
 import {useAppTheme} from '@hooks';
 import {useAppSafeArea} from '@hooks';
 
-interface ScreenProps {
+interface ScreenProps extends BoxProps {
   children?: React.ReactNode;
   canGoback?: boolean;
   scrollable?: boolean;
 }
 
-export const Screen = ({children, canGoback, scrollable}: ScreenProps) => {
+export const Screen = ({
+  children,
+  canGoback,
+  scrollable,
+  style,
+  ...BoxProps
+}: ScreenProps) => {
   const {top, bottom} = useAppSafeArea();
   const {colors} = useAppTheme();
 
@@ -34,9 +41,10 @@ export const Screen = ({children, canGoback, scrollable}: ScreenProps) => {
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
       <Container backgroundColor={colors.background}>
         <Box
-          paddingBottom="s24"
+          //paddingBottom="s24"
           paddingHorizontal="s24"
-          style={{paddingTop: top, paddingBottom: bottom}}>
+          style={[{paddingTop: top, paddingBottom: bottom}, style]}
+          {...BoxProps}>
           {canGoback && (
             <TouchableOpacityBox
               onPress={navigation.goBack}
