@@ -10,7 +10,8 @@
     "test": "jest",
     "prepare": "husky install",
     "lint-staged": "lint-staged",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "clean": "rm -rf node_modules && yarn cache clean && yarn"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.2",
