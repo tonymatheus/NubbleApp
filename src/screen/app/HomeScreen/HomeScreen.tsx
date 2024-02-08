@@ -1,5 +1,11 @@
 import React from 'react';
-import {FlatList, ListRenderItemInfo, StyleProp, ViewStyle} from 'react-native';
+import {
+  FlatList,
+  ListRenderItemInfo,
+  RefreshControl,
+  StyleProp,
+  ViewStyle,
+} from 'react-native';
 
 import {Post, usePostList} from '@domain';
 
@@ -10,7 +16,8 @@ import {HomeEmpty} from './components/HomeEmpty';
 import {HomeHeader} from './components/HomeHeader';
 
 export const HomeScreen = ({}: AppTabScreenProps<'HomeScreen'>) => {
-  const {postList, isPostListEmpty, refetch, loading, error} = usePostList();
+  const {postList, isPostListEmpty, refresh, loading, error, fetchNextPage} =
+    usePostList();
 
   const renderPostItem = ({item}: ListRenderItemInfo<Post>) => {
     return <PostItem post={item} />;
@@ -22,11 +29,17 @@ export const HomeScreen = ({}: AppTabScreenProps<'HomeScreen'>) => {
         showsVerticalScrollIndicator={false}
         data={postList}
         keyExtractor={item => item.id}
+        onEndReached={fetchNextPage}
+        onEndReachedThreshold={0.1}
+        refreshing={loading}
+        refreshControl={
+          <RefreshControl refreshing={loading} onRefresh={refresh} />
+        }
         renderItem={renderPostItem}
         contentContainerStyle={{flex: isPostListEmpty}}
         ListHeaderComponent={<HomeHeader />}
         ListEmptyComponent={
-          <HomeEmpty error={error} loading={loading} refetch={refetch} />
+          <HomeEmpty error={error} loading={loading} refetch={refresh} />
         }
       />
     </Screen>
