@@ -9,14 +9,19 @@ export const usePostList = () => {
   const [error, setError] = useState<boolean | null>(null);
   const [page, setPage] = useState(1);
   const isPostListEmpty = postList.length === 0 ? 1 : undefined;
-
+  const [hasNextPage, setHasNextPage] = useState(true);
   const fetchInitialData = async () => {
     try {
       setError(null);
       setLoading(true);
-      const list = await postService.getList(1);
-      setPostList(list);
-      setPage(2);
+      const {data, meta} = await postService.getList(1);
+      setPostList(data);
+      if (meta.hasNextPage) {
+        setPage(2);
+        setHasNextPage(true);
+      } else {
+        setHasNextPage(false);
+      }
       // eslint-disable-next-line no-catch-shadow
     } catch (error) {
       setError(true);
@@ -27,15 +32,19 @@ export const usePostList = () => {
   };
 
   const fetchNextPage = async () => {
-    if (loading) {
+    if (loading || !hasNextPage) {
       return;
     }
 
     try {
       setLoading(false);
-      const list = await postService.getList(page);
-      setPostList(prev => [...prev, ...list]);
-      setPage(prev => prev + 1);
+      const {meta, data} = await postService.getList(page);
+      setPostList(prev => [...prev, ...data]);
+      if (meta.hasNextPage) {
+        setPage(prev => prev + 1);
+      } else {
+        setHasNextPage(false);
+      }
     } catch (err) {
       setError(err);
     } finally {
