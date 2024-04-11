@@ -9,7 +9,7 @@ export const PostCommentScreen = ({
 }: AppScreenProps<'PostCommentScreen'>) => {
   //route.params.postId
   return (
-    <Screen title="Comentários" canGoback>
+    <Screen title="Comentários" canGoBack>
       <Box>
         <Text>Tela de comentários</Text>
       </Box>
