@@ -22,7 +22,6 @@ export const PostItem = ({post}: Props) => {
         reactionCount={post.reactionCount}
         commentCount={post.commentCount}
         favoriteCount={post.favoriteCount}
-        id={post.id}
       />
       <PostBottom
         author={post.author}
