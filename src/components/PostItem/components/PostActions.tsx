@@ -3,6 +3,7 @@
 import React from 'react';
 
 import {Post} from '@domain';
+import {useNavigation} from '@react-navigation/native';
 
 import {Box, Icon, IconProps, Text, TouchableOpacityBox} from '@components';
 
@@ -22,13 +23,19 @@ export const PostActions = ({
   commentCount,
   favoriteCount,
   reactionCount,
+  id,
 }: Props) => {
   const likePost = () => {
     console.log('liked');
   };
 
+  const navigation = useNavigation();
+
   const navigateToComments = () => {
     // TODO: Implement navigate to comments
+    navigation.navigate('PostCommentScreen', {
+      postId: id,
+    });
   };
 
   const favoretePost = () => {
@@ -47,7 +54,7 @@ export const PostActions = ({
         marked={false}
         icon={{default: 'comment', marked: 'comment'}}
         text={commentCount}
-        onPress={likePost}
+        onPress={navigateToComments}
       />
       <Item
         marked={false}
