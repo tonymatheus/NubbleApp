@@ -19,6 +19,7 @@ interface ScreenProps extends BoxProps {
   children?: React.ReactNode;
   canGoback?: boolean;
   scrollable?: boolean;
+  title?: string;
 }
 
 export const Screen = ({
@@ -26,6 +27,7 @@ export const Screen = ({
   canGoback,
   scrollable,
   style,
+  title,
   ...BoxProps
 }: ScreenProps) => {
   const {top, bottom} = useAppSafeArea();
@@ -52,7 +54,7 @@ export const Screen = ({
               flexDirection="row">
               <Icon name="arrowLeft" color="primary" />
               <Text preset="paragraphMedium" semiBold marginLeft="s8">
-                Voltar
+                {title}
               </Text>
             </TouchableOpacityBox>
           )}
