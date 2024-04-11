@@ -8,7 +8,7 @@ export const SettingsScreen = ({
   navigation,
 }: AppScreenProps<'SettingsScreen'>) => {
   return (
-    <Screen canGoback>
+    <Screen canGoBack>
       <Text preset="headingLarge">Settings Screen</Text>
       <Button
         title="New Post"
