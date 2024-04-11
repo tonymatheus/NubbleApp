@@ -38,7 +38,7 @@ export const ForgotPasswordScreen =
     };
 
     return (
-      <Screen canGoback>
+      <Screen canGoBack>
         <Text preset="headingLarge" marginBottom="s16">
           Esqueci minha senha
         </Text>
