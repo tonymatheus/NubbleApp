@@ -48,7 +48,7 @@ export const usePaginatedList = <Data>(
         setHasNextPage(false);
       }
     } catch (err) {
-      setError(err);
+      setError(true);
     } finally {
       setLoading(false);
     }

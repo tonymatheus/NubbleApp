@@ -1,5 +1,5 @@
 export interface Post {
-  id?: number;
+  id: number;
   text: string;
   author: {
     profileURL: string;
