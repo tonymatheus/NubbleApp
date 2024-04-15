@@ -32,7 +32,7 @@ export const HomeScreen = ({}: AppTabScreenProps<'HomeScreen'>) => {
         ref={flatListRef}
         showsVerticalScrollIndicator={false}
         data={list}
-        keyExtractor={item => item.id}
+        keyExtractor={item => item.id.toString()}
         onEndReached={fetchNextPage}
         onEndReachedThreshold={0.1}
         refreshing={loading}

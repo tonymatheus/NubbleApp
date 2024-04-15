@@ -7,7 +7,10 @@ import {useNavigation} from '@react-navigation/native';
 
 import {Box, Icon, IconProps, Text, TouchableOpacityBox} from '@components';
 
-type Props = Pick<Post, 'reactionCount' | 'commentCount' | 'favoriteCount'>;
+type Props = Pick<
+  Post,
+  'reactionCount' | 'commentCount' | 'favoriteCount' | 'id'
+>;
 
 interface ItemProps {
   onPress: () => void;
