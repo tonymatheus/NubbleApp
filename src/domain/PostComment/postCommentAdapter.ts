@@ -1,3 +1,5 @@
+import {dateUtils} from '@utils';
+
 import {PostComment, PostCommentAPI} from './postCommentTypes';
 
 export const toPostComment = (postCommentAPI: PostCommentAPI): PostComment => {
@@ -5,6 +7,7 @@ export const toPostComment = (postCommentAPI: PostCommentAPI): PostComment => {
     id: postCommentAPI.id,
     message: postCommentAPI.message,
     created_at: postCommentAPI.created_at,
+    createdAtRelative: dateUtils.formatRelative(postCommentAPI.created_at),
     author: {
       profileURL: postCommentAPI.user.profile_url,
       name: postCommentAPI.user.full_name,

@@ -66,5 +66,6 @@ export const usePaginatedList = <Data>(
     isPostListEmpty,
     fetchNextPage,
     refresh: fetchInitialData,
+    hasNextPage,
   };
 };
