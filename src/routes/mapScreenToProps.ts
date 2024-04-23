@@ -28,15 +28,15 @@ export const mapScreenToProps: Record<
   FavoriteScreen: {
     label: 'Favoritos',
     icon: {
-      focused: 'bookmark',
-      unfocused: 'bookmarkFill',
+      focused: 'bookmarkFill',
+      unfocused: 'bookmark',
     },
   },
   MyProfileScreen: {
     label: 'Meu Perfil',
     icon: {
-      focused: 'profile',
-      unfocused: 'profileFill',
+      focused: 'profileFill',
+      unfocused: 'profile',
     },
   },
 };
