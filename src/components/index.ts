@@ -11,3 +11,4 @@ export * from './Screen/components/ScreenContainers';
 export * from './Text/Text';
 export * from './TextInput/TextInput';
 export * from './PostItem/PostItem';
+export * from './ProfileAvatar/ProfileAvatar';
