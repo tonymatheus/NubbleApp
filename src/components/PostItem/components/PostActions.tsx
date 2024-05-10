@@ -12,6 +12,8 @@ type Props = Pick<
   'reactionCount' | 'commentCount' | 'favoriteCount' | 'id'
 >;
 
+const AuthorIdMock = 1;
+
 interface ItemProps {
   onPress: () => void;
   text: number;
@@ -38,6 +40,7 @@ export const PostActions = ({
     // TODO: Implement navigate to comments
     navigation.navigate('PostCommentScreen', {
       postId: id,
+      postAuthorId: AuthorIdMock,
     });
   };
 
