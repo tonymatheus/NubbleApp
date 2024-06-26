@@ -50,8 +50,21 @@ target 'NubbleApp' do
     # Pods for testing
   end
 
+  # https://github.com/facebook/react-native/blob/main/packages/react-native/scripts/react_native_pods.rb#L197-L202
   post_install do |installer|
-    # https://github.com/facebook/react-native/blob/main/packages/react-native/scripts/react_native_pods.rb#L197-L202
+      installer.pods_project.targets.each do |target|
+        if target.name == 'Flipper'
+          file_path = 'Pods/Flipper/xplat/Flipper/FlipperTransportTypes.h'
+          contents = File.read(file_path)
+          unless contents.include?('#include <functional>')
+            File.open(file_path, 'w') do |file|
+              file.puts('#include <functional>')
+              file.puts(contents)
+            end
+          end
+        end
+      end
+    
     react_native_post_install(
       installer,
       config[:reactNativePath],
