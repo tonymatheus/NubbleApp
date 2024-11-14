@@ -1,51 +1,60 @@
-import React, {useEffect} from 'react';
-import {Dimensions} from 'react-native';
+import React, {useCallback, useEffect, useRef} from 'react';
+import {Animated} from 'react-native';
 
-import {Box, BoxProps, Icon, Text} from '@components';
-import {$shadowProps} from '@theme';
+import {ToastPosition, useToast, useToastService} from '@services';
 
-import {useToast, useToastService} from '../../services/toast/useToast';
+import {ToastContent} from './components/ToastContent';
 
-const MAX_WIDTH = Dimensions.get('screen').width * 0.9;
+const DEFAULT_DURATION = 3000;
 export const Toast = () => {
   const {toast} = useToast();
+  const position: ToastPosition = toast?.position || 'top';
+
   const {hideToast} = useToastService();
+
+  const fadeIn = useRef(new Animated.Value(0)).current;
+
+  const runEnteringAnimation = useCallback(() => {
+    Animated.timing(fadeIn, {
+      toValue: 1,
+      duration: 1000,
+      useNativeDriver: true,
+    }).start();
+  }, [fadeIn]);
+
+  const runExitingAnimation = useCallback(
+    (callback: Animated.EndCallback) => {
+      Animated.timing(fadeIn, {
+        toValue: 0,
+        duration: 1000,
+        useNativeDriver: true,
+      }).start(callback);
+    },
+    [fadeIn],
+  );
 
   useEffect(() => {
     if (toast) {
+      runEnteringAnimation();
       setTimeout(() => {
-        hideToast();
-      }, 1500);
+        runExitingAnimation(hideToast);
+      }, toast.duration || DEFAULT_DURATION);
     }
-  }, [toast, hideToast]);
+  }, [toast, hideToast, runEnteringAnimation, runExitingAnimation]);
 
   if (!toast) {
     return null;
   }
 
   return (
-    <Box top={100} {...$boxStyle}>
-      <Icon name="checkRound" color="success" />
-      <Text
-        style={{flexShrink: 1}}
-        marginLeft="s16"
-        preset="paragraphMedium"
-        bold>
-        {toast?.message}
-      </Text>
-    </Box>
+    <Animated.View
+      style={{
+        position: 'absolute',
+        alignSelf: 'center',
+        opacity: fadeIn,
+        [position]: 100,
+      }}>
+      <ToastContent toast={toast} />
+    </Animated.View>
   );
-};
-
-const $boxStyle: BoxProps = {
-  position: 'absolute',
-  alignSelf: 'center',
-  alignItems: 'center',
-  padding: 's16',
-  borderRadius: 's16',
-  backgroundColor: 'background',
-  flexDirection: 'row',
-  opacity: 0.95,
-  maxWidth: MAX_WIDTH,
-  style: {...$shadowProps},
 };
