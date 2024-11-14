@@ -1,6 +1,14 @@
 import {ToastService} from './toastTypes';
-import {useToastContext} from './useToastContext';
+import {useToastServiceZustend, useToastZustend} from './useToastZustend';
 
 export const useToast = (): ToastService => {
-  return useToastContext();
+  const toast = useToastZustend();
+  return toast;
 };
+
+export function useToastService(): Pick<
+  ToastService,
+  'showToast' | 'hideToast'
+> {
+  return useToastServiceZustend();
+}
