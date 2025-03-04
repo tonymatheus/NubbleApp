@@ -6,12 +6,11 @@ import {usePostCommentCreate} from '@domain';
 import {TextMessage} from '@components';
 
 interface Props {
-  postID: number;
+  postId: number;
 }
-
-export const PostCommentTextMessage = ({postID}: Props) => {
+export function PostCommentTextMessage({postId}: Props) {
   const [message, setMessage] = useState('');
-  const {createComment} = usePostCommentCreate(postID, {
+  const {createComment} = usePostCommentCreate(postId, {
     onSuccess: () => {
       setMessage('');
       Keyboard.dismiss();
@@ -20,10 +19,10 @@ export const PostCommentTextMessage = ({postID}: Props) => {
 
   return (
     <TextMessage
+      placeholder="Adicione um comentário"
       onPressSend={createComment}
-      placeholder="adicone um comentário"
       value={message}
       onChangeText={setMessage}
     />
   );
-};
+}
