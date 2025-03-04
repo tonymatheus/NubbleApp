@@ -8,21 +8,20 @@ import {Box, ProfileAvatar, Text} from '@components';
 
 export interface Props {
   postComment: PostComment;
+  postId: number;
   userId: number;
   postAuthorId: number;
-  onRemoveComment: () => void;
 }
 
 export const PostCommentItem = ({
   postComment,
-  onRemoveComment,
   userId,
   postAuthorId,
+  postId,
 }: Props) => {
   const {showToast} = useToastService();
-  const {mutate} = usePostCommentRemove({
+  const {mutate} = usePostCommentRemove(postId, {
     onSuccess: () => {
-      onRemoveComment();
       showToast({
         message: 'Cometário deletado',
       });

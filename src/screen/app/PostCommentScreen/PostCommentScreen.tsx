@@ -13,50 +13,45 @@ import {
   PostCommentTextMessage,
 } from './components';
 
-export const PostCommentScreen = ({
+export function PostCommentScreen({
   route,
-}: AppScreenProps<'PostCommentScreen'>) => {
-  const postID = route?.params?.postId;
-  const postAuthorId = route.params?.postAuthorId;
-  const {list, fetchNextPage, hasNextPage, refresh} =
-    usePostCommentList(postID);
+}: AppScreenProps<'PostCommentScreen'>) {
+  const postId = route.params.postId;
+  const postAuthorId = route.params.postAuthorId;
+  const {list, fetchNextPage, hasNextPage} = usePostCommentList(postId);
 
-  const {bottom} = useAppSafeArea();
   const {id} = useUser();
 
-  const renderItem = ({item}: ListRenderItemInfo<PostComment>) => {
+  const {bottom} = useAppSafeArea();
+
+  function renderItem({item}: ListRenderItemInfo<PostComment>) {
     return (
-      <Box>
-        <PostCommentItem
-          postComment={item}
-          key={postID}
-          onRemoveComment={refresh}
-          postAuthorId={postAuthorId}
-          userId={id}
-        />
-      </Box>
+      <PostCommentItem
+        postId={postId}
+        postComment={item}
+        userId={id}
+        postAuthorId={postAuthorId}
+      />
     );
-  };
+  }
 
   return (
-    <Screen title="Comentários" canGoBack flex={1}>
+    <Screen flex={1} title="Comentários" canGoBack>
       <Box flex={1} justifyContent="space-between">
         <FlatList
-          key={postID}
-          keyExtractor={item => item.id.toString()}
+          showsVerticalScrollIndicator={false}
           data={list}
           renderItem={renderItem}
-          showsVerticalScrollIndicator={false}
           contentContainerStyle={{paddingBottom: bottom}}
           ListFooterComponent={
             <PostCommentBottom
-              fetchNextPage={fetchNextPage}
               hasNextPage={hasNextPage}
+              fetchNextPage={fetchNextPage}
             />
           }
         />
-        <PostCommentTextMessage postID={postID} onAddComment={refresh} />
+        <PostCommentTextMessage postId={postId} />
       </Box>
     </Screen>
   );
-};
+}

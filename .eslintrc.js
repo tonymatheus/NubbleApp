@@ -1,13 +1,16 @@
 module.exports = {
   root: true,
-  extends: '@react-native',
+  extends: [
+    '@react-native',
+    'plugin:@tanstack/eslint-plugin-query/recommended',
+  ],
   rules: {
     '@typescript-eslint/no-unused-vars': 'error',
     'react/react-in-jsx-scope': 0,
     'react-native/no-inline-styles': 0,
     'no-console': ['error', {allow: ['']}],
   },
-  plugins: ['import'],
+  plugins: ['import', '@tanstack/query'],
   overrides: [
     {
       files: ['*.ts', '*.tsx'],

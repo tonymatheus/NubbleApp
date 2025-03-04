@@ -1,71 +1,49 @@
-/* eslint-disable no-console */
 import {useEffect, useState} from 'react';
 
+import {useInfiniteQuery} from '@tanstack/react-query';
 import {Page} from '@types';
 
+export interface UsePaginatedListResult<TData> {
+  list: TData[];
+  isError: boolean | null;
+  isLoading: boolean;
+  isPostListEmpty: number | undefined;
+  refresh: () => void;
+  fetchNextPage: () => void;
+  hasNextPage: boolean;
+}
+
 export const usePaginatedList = <Data>(
+  queryKey: readonly unknown[],
   getList: (page: number) => Promise<Page<Data>>,
-) => {
+): UsePaginatedListResult<Data> => {
   const [list, setList] = useState<Data[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<boolean | null>(null);
-  const [page, setPage] = useState(1);
+
+  const query = useInfiniteQuery({
+    queryKey,
+    queryFn: ({pageParam = 1}) => getList(pageParam),
+    getNextPageParam: ({meta}) =>
+      meta.hasNextPage ? meta.currentPage + 1 : null,
+  });
+
   const isPostListEmpty = list.length === 0 ? 1 : undefined;
-  const [hasNextPage, setHasNextPage] = useState(true);
-  const fetchInitialData = async () => {
-    try {
-      setError(null);
-      setLoading(true);
-      const {data, meta} = await getList(1);
-      setList(data);
-      if (meta.hasNextPage) {
-        setPage(2);
-        setHasNextPage(true);
-      } else {
-        setHasNextPage(false);
-      }
-      // eslint-disable-next-line no-catch-shadow
-    } catch (error) {
-      setError(true);
-      console.log('ERROR', error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const fetchNextPage = async () => {
-    if (loading || !hasNextPage) {
-      return;
-    }
-
-    try {
-      setLoading(false);
-      const {meta, data} = await getList(page);
-      setList(prev => [...prev, ...data]);
-      if (meta.hasNextPage) {
-        setPage(prev => prev + 1);
-      } else {
-        setHasNextPage(false);
-      }
-    } catch (err) {
-      setError(true);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   useEffect(() => {
-    fetchInitialData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    if (query.data) {
+      const newList = query.data.pages.reduce<Data[]>((prev, curr) => {
+        return [...prev, ...curr.data];
+      }, []);
+      setList(newList);
+    }
+  }, [query.data]);
 
   return {
     list,
-    error,
-    loading,
+    isError: query.isError,
+    isLoading: query.isLoading,
     isPostListEmpty,
-    fetchNextPage,
-    refresh: fetchInitialData,
-    hasNextPage,
+    fetchNextPage: query.fetchNextPage,
+    refresh: query.refetch,
+    hasNextPage: !!query.hasNextPage,
   };
 };
