@@ -1,5 +1,5 @@
 import React from 'react';
-import {TouchableWithoutFeedback} from 'react-native';
+import {Pressable} from 'react-native';
 
 import {Post} from '@domain';
 import {useNavigation} from '@react-navigation/native';
@@ -10,9 +10,13 @@ type Props = Pick<Post, 'author'>;
 
 export const PostHeader = ({author}: Props) => {
   const navigation = useNavigation();
+
+  function navigateToProfile() {
+    navigation.navigate('ProfileScreen', {userId: author.id});
+  }
+
   return (
-    <TouchableWithoutFeedback
-      onPress={() => navigation.navigate('ProfileScreen', {userId: 1})}>
+    <Pressable onPress={navigateToProfile}>
       <Box marginBottom="s24">
         <Box flexDirection="row" alignItems="center" marginBottom="s16">
           <ProfileAvatar imageURL={author.profileURL} />
@@ -21,6 +25,6 @@ export const PostHeader = ({author}: Props) => {
           </Text>
         </Box>
       </Box>
-    </TouchableWithoutFeedback>
+    </Pressable>
   );
 };
