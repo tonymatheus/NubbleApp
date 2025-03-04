@@ -18,8 +18,7 @@ export const PostCommentScreen = ({
 }: AppScreenProps<'PostCommentScreen'>) => {
   const postID = route?.params?.postId;
   const postAuthorId = route.params?.postAuthorId;
-  const {list, fetchNextPage, hasNextPage, refresh} =
-    usePostCommentList(postID);
+  const {list, fetchNextPage, hasNextPage} = usePostCommentList(postID);
 
   const {bottom} = useAppSafeArea();
   const {id} = useUser();
@@ -28,9 +27,9 @@ export const PostCommentScreen = ({
     return (
       <Box>
         <PostCommentItem
+          postId={postID}
           postComment={item}
           key={postID}
-          onRemoveComment={refresh}
           postAuthorId={postAuthorId}
           userId={id}
         />
@@ -55,7 +54,7 @@ export const PostCommentScreen = ({
             />
           }
         />
-        <PostCommentTextMessage postID={postID} onAddComment={refresh} />
+        <PostCommentTextMessage postID={postID} />
       </Box>
     </Screen>
   );
