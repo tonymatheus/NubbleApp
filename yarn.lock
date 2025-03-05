@@ -4456,9 +4456,9 @@ flow-enums-runtime@^0.0.6:
   integrity sha512-3PYnM29RFXwvAN6Pc/scUfkI7RwhQ/xqyLUyPNlXUp9S40zI8nup9tUSrTLSVnWGBN38FNiGWbwZOB6uR4OGdw==
 
 flow-parser@0.*:
-  version "0.262.0"
-  resolved "https://registry.yarnpkg.com/flow-parser/-/flow-parser-0.262.0.tgz#3af48ee0c0d8f56729ae18a748d1fb0953db1c33"
-  integrity sha512-K3asSw4s2/sRoUC4xD2OfGi04gdYCCFRgkcwEXi5JyfFhS0HrFWLcDPp55ttv95OY5970WKl4T+7hWrnuOAUMQ==
+  version "0.263.0"
+  resolved "https://registry.yarnpkg.com/flow-parser/-/flow-parser-0.263.0.tgz#97740b1401297a0fae0deef9c213865264435007"
+  integrity sha512-F0Tr7SUvZ4BQYglFOkr8rCTO5FPjCwMhm/6i57h40F80Oz/hzzkqte4lGO0vGJ7THQonuXcTyYqCdKkAwt5d2w==
 
 follow-redirects@^1.15.0:
   version "1.15.9"
@@ -7163,26 +7163,27 @@ react-is@^19.0.0:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-19.0.0.tgz#d6669fd389ff022a9684f708cf6fa4962d1fea7a"
   integrity sha512-H91OHcwjZsbq3ClIDHMzBShc1rotbfACdWENsmEf0IFvZ3FgGPtdHMcsv45bQ1hAbgdfiA8SnxTKfDS+x/8m2g==
 
-react-native-safe-area-context@4.10.1:
-  version "4.10.1"
-  resolved "https://registry.yarnpkg.com/react-native-safe-area-context/-/react-native-safe-area-context-4.10.1.tgz#29fb27395ff7dfa2fa38788a27226330d73a81cc"
-  integrity sha512-w8tCuowDorUkPoWPXmhqosovBr33YsukkwYCDERZFHAxIkx6qBadYxfeoaJ91nCQKjkNzGrK5qhoNOeSIcYSpA==
+react-native-safe-area-context@5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-safe-area-context/-/react-native-safe-area-context-5.2.0.tgz#60a9faab2a6319a61411a652ed862ec0f59384be"
+  integrity sha512-QpcGA6MRKe8Zbpf1hirCBudNQYGsMv0n/CTTROMOFcXbqRUoEXLCsYxUmYKi7JJb3ziL2DbyzWXyH2/gw4Tkfw==
 
-react-native-screens@^3.25.0:
-  version "3.36.0"
-  resolved "https://registry.yarnpkg.com/react-native-screens/-/react-native-screens-3.36.0.tgz#c6f1209147cdff90cc869f8850f743fdcbc49d91"
-  integrity sha512-ipbPK+WpkYDK70VjdL78ruo0ez/atf9fiN0WCfqkx3ECrCCOsyUdnLsADFQpFaOigJeK6abZa9H5FojC4dDWoQ==
+react-native-screens@4.9.1:
+  version "4.9.1"
+  resolved "https://registry.yarnpkg.com/react-native-screens/-/react-native-screens-4.9.1.tgz#fc4e9fb6efd8351593ac026db02bfefc28434624"
+  integrity sha512-3pIOu1YXTDClQfkgk2t7rIr7unrV6bviaXRJsOq1APNHLeCPrJ6m5Gy3pW5Ty+XBm9jRAbMqhpjiXZIjesOR6A==
   dependencies:
     react-freeze "^1.0.0"
     warn-once "^0.1.0"
 
-react-native-svg@^13.11.0:
-  version "13.14.1"
-  resolved "https://registry.yarnpkg.com/react-native-svg/-/react-native-svg-13.14.1.tgz#265ec50b57dc042b8b8bd55d03aaf394d1ba9f7a"
-  integrity sha512-0DSa0EOySzV0J9utmRFVE5Vr4mKRXA7GtH1Ga1B6fzR967HGFW1ytH6hmnOf36316hjYpXMMB7s4oVe1FqghlQ==
+react-native-svg@15.11.2:
+  version "15.11.2"
+  resolved "https://registry.yarnpkg.com/react-native-svg/-/react-native-svg-15.11.2.tgz#7540e8e1eabc4dcd3b1e35ada5a1d9f1b96d37c4"
+  integrity sha512-+YfF72IbWQUKzCIydlijV1fLuBsQNGMT6Da2kFlo1sh+LE3BIm/2Q7AR1zAAR6L0BFLi1WaQPLfFUC9bNZpOmw==
   dependencies:
     css-select "^5.1.0"
     css-tree "^1.1.3"
+    warn-once "0.1.1"
 
 react-native@0.78.0:
   version "0.78.0"
@@ -8423,7 +8424,7 @@ walker@^1.0.7, walker@^1.0.8:
   dependencies:
     makeerror "1.0.12"
 
-warn-once@^0.1.0:
+warn-once@0.1.1, warn-once@^0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/warn-once/-/warn-once-0.1.1.tgz#952088f4fb56896e73fd4e6a3767272a3fccce43"
   integrity sha512-VkQZJbO8zVImzYFteBXvBOZEl1qL175WH8VmZcxF2fZAoudNhNDvHi+doCaAEdU2l2vtcIwa2zn0QK5+I1HQ3Q==
