@@ -26,7 +26,7 @@ export function HomeScreen({}: AppTabScreenProps<'HomeScreen'>) {
   } = usePostList();
 
   const flatListRef = React.useRef<FlatList<Post>>(null);
-  useScrollToTop(flatListRef);
+  useScrollToTop(flatListRef as React.RefObject<FlatList<Post>>);
 
   function renderItem({item}: ListRenderItemInfo<Post>) {
     return <PostItem post={item} />;
