@@ -2,7 +2,7 @@ import {useMutation} from '@tanstack/react-query';
 
 import {authService} from '../authService';
 
-export function useAuthSignIn() {
+export function useAuthSignOut() {
   const mutation = useMutation({
     mutationFn: authService.signOut,
     retry: false,
