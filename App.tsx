@@ -18,6 +18,9 @@ import {Router} from './src/routes/Routes';
 import {theme} from './src/theme/theme';
 const queryClient = new QueryClient();
 
+if (__DEV__) {
+  require('./ReactotronConfig');
+}
 function App(): React.JSX.Element {
   return (
     <QueryClientProvider client={queryClient}>
