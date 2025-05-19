@@ -1,7 +1,8 @@
 import React from 'react';
-import {Alert} from 'react-native';
 
+import {useAuthSignIn} from '@domain';
 import {zodResolver} from '@hookform/resolvers/zod';
+import {useToast} from '@services';
 import {useForm} from 'react-hook-form';
 
 import {
@@ -17,10 +18,10 @@ import {AuthScreenProps} from '@routes';
 import {LoginSchema, loginScheme} from './loginScheme';
 
 export const LoginScreen = ({navigation}: AuthScreenProps<'LoginScreen'>) => {
-  // const [email, setEmail] = useState('');
-  // const [password, setPassword] = useState('');
-
-  // const [emailErrorMessage, setEmailErrorMessage] = useState('');
+  const {showToast} = useToast();
+  const {isLoading, signIn} = useAuthSignIn({
+    onError: message => showToast({message: message, type: 'error'}),
+  });
 
   const {control, formState, handleSubmit} = useForm<LoginSchema>({
     resolver: zodResolver(loginScheme),
@@ -32,7 +33,10 @@ export const LoginScreen = ({navigation}: AuthScreenProps<'LoginScreen'>) => {
   });
 
   const submitForm = ({email, password}: LoginSchema) => {
-    Alert.alert(`Email: ${email} ${'\n'} Senha: ${password}`);
+    signIn({
+      email,
+      password,
+    });
   };
 
   const navigateToSignUpScreen = () => {
@@ -74,6 +78,7 @@ export const LoginScreen = ({navigation}: AuthScreenProps<'LoginScreen'>) => {
         </Text>
       </TouchableOpacityBox>
       <Button
+        loading={isLoading}
         title="Entrar"
         preset="primary"
         marginTop="s48"
